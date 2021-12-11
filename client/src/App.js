@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ReactFlow from 'react-flow-renderer'
-import ModelMenu from './components/ModelMenu/ModelMenu';
 import './App.css'
 
 function App() {
