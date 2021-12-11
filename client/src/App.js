@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import ReactFlow from 'react-flow-renderer'
+import ModelMenu from './components/ModelMenu/ModelMenu';
+import './App.css'
 
 function App() {
 
-    const [data, setData] = useState([{}]);
+    // const [data, setData] = useState([{}]);
     const elements = [
         {
             id: '1',
@@ -29,19 +31,20 @@ function App() {
         { id: 'e2-3', source: '2', target: '3' }
     ];
 
-    useEffect(() => {
-        fetch("/members").then(
-            res => res.json()
-        ).then(
-            data => {
-                setData(data)
-                console.log(data)
-            }
-        )
-    }, [])
+    // Example of communication with the backend
+    // useEffect(() => {
+    //     fetch("/members").then(
+    //         res => res.json()
+    //     ).then(
+    //         data => {
+    //             setData(data)
+    //             console.log(data)
+    //         }
+    //     )
+    // }, [])
 
     return (
-        <div style={{ height: 300 }}>
+        <div style={{ height: "100%" }}>
             <ReactFlow elements={elements} />
         </div>
     )
