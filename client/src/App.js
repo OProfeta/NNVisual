@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReactFlow from 'react-flow-renderer'
 import './App.css'
+import ModelMenu from './components/ModelMenu/ModelMenu';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
 
     return (
         <div style={{ height: "100%" }}>
+            <ModelMenu />
             <ReactFlow elements={elements} />
         </div>
     )
