@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import ReactFlow from 'react-flow-renderer'
+import React, { useState, useEffect, useCallback } from 'react'
+import ReactFlow, { addEdge } from 'react-flow-renderer'
 import './App.css'
 import ModelMenu from './components/ModelMenu/ModelMenu';
 import CodeBlock from './components/CodeBlock/CodeBlock';
-
-const initBgColor = '#1A192B';
 
 const nodeTypes = {
     codeNode: CodeBlock,
 };
 
-const elements = [];
+const initialElements = [];
 
 function App() {
-
-    const [data, setData] = useState(elements);
-
 
     // Example of communication with the backend
     // useEffect(() => {
@@ -29,12 +24,23 @@ function App() {
     //     )
     // }, [])
 
+    const [elements, setElements] = useState(initialElements);
+
+    const onConnect = useCallback(
+        (params) => 
+            setElements((els) =>
+                addEdge({...params}, els)
+            ),
+        [],
+    )
+
     return (
         <div style={{ height: "100%" }}>
-            <ModelMenu elements={data} setElements={setData} />
+            <ModelMenu elements={elements} setElements={setElements} />
             <ReactFlow
-                elements={data}
+                elements={elements}
                 nodeTypes={nodeTypes}
+                onConnect={onConnect}
             />
         </div>
     )
