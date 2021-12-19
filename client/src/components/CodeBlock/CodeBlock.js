@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import CodeEditor from "./../CodeEditor/CodeEditor";
 
 import { Handle } from "react-flow-renderer";
 
@@ -13,14 +14,9 @@ export default memo(({ data, isConnectable }) => {
                 isConnectable={isConnectable}
             />
             <div>
-                Custom Color Picker Node: <strong>{data.color}</strong>
+                Custom Node: {data.id}
             </div>
-            <input
-                className="nodrag"
-                type="color"
-                // onChange={data.onChange}
-                defaultValue={data.color}
-            />
+            <CodeEditor placeHolder={data.placeHolder}></CodeEditor>
             <Handle
                 type="source"
                 position="right"
