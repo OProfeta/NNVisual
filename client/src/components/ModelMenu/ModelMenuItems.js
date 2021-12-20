@@ -80,7 +80,7 @@ export const ModelMenuItems = [
                             color: '#333' ,
                             placeHolder: 'Code goes here'
                         },
-                        style: { border: '1px solid #777', padding: 10 },
+                        style: { border: '1px solid #777', padding: 10, backgroundColor: "white" },
                         position: { x : 251, y: 251}
                     }
                 ]
