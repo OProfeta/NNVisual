@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ModelMenuItems } from "./ModelMenuItems"
 import './ModelMenu.css'
+import Dropdown from './../Dropdown/Dropdown'
 
 function ModelMenu({elements, setElements}) {
     return(
@@ -11,10 +12,11 @@ function ModelMenu({elements, setElements}) {
             <ul>
                 {ModelMenuItems.map((item, index) => {
                     return (
-                        <li key={index} style={{ display: "inline" }}>
-                            <button className={item.cName} onClick={() => item.onClick(elements, setElements)}>
-                                {item.title}
-                            </button>
+                        <li key={index} style={{ position: "relative", display: "inline-block" }}>
+                            <Dropdown
+                                title={item.title}
+                                list={item.list}
+                            />
                         </li>
                     )
                 })}

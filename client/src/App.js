@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import ReactFlow, { addEdge } from 'react-flow-renderer'
+import ReactFlow, { addEdge, Background } from 'react-flow-renderer'
 import './App.css'
 import ModelMenu from './components/ModelMenu/ModelMenu';
 import CodeBlock from './components/CodeBlock/CodeBlock';
@@ -35,7 +35,7 @@ function App() {
     )
 
     return (
-        <div style={{ height: "100%" }}>
+        <div style={{ height: "100%", backgroundColor: "#32252a"  }}>
             <ModelMenu elements={elements} setElements={setElements} />
             <ReactFlow
                 elements={elements}
