@@ -35,13 +35,6 @@ function App() {
     const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [elements, setElements] = useState(initialElements);
-    // const onConnect = useCallback(
-    //     (params) => 
-    //         setElements((els) =>
-    //             addEdge({...params}, els)
-    //         ),
-    //     [],
-    // )
     const onConnect = (params) => setElements((els) => addEdge(params, els));
 
     const onLoad = (_reactFlowInstance) => setReactFlowInstance(_reactFlowInstance);
