@@ -69,6 +69,7 @@ function App() {
             data: data,
             style: { border: '1px solid #777', padding: 10, background: "white" },
         };
+        newNode.data.id = newNode.id;
 
         setElements((es) => es.concat(newNode));
     }
