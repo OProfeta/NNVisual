@@ -7,6 +7,12 @@ export const ModelMenuItems = [
         list: [
             {
                 title: "Reshape",
+                type: "reshapeNode",
+                data: {
+                    X: 0,
+                    Y: 0,
+                    Z: 0
+                },
                 onClick: (elements, setElements) => {
                     setElements((elements) => {
                         return [
@@ -28,13 +34,16 @@ export const ModelMenuItems = [
                 }
             },
             {
-                title: "Grayscale"
+                title: "Grayscale",
+                type: "",
             },
             {
-                title: "OneHot"
+                title: "OneHot",
+                type: "",
             },
             {
-                title: "Rescale"
+                title: "Rescale",
+                type: "",
             },
         ]
     },
@@ -45,13 +54,16 @@ export const ModelMenuItems = [
         key: "deepLearning",
         list: [
             {
-                title: "Dense"
+                title: "Dense",
+                type: "",
             },
             {
-                title: "Convolution"
+                title: "Convolution",
+                type: "",
             },
             {
-                title: "Recurrent"
+                title: "Recurrent",
+                type: "",
             },
         ]
     },
@@ -62,10 +74,12 @@ export const ModelMenuItems = [
         key: "operations",
         list: [
             {
-                title: "Argmax"
+                title: "Argmax",
+                type: "",
             },
             {
-                title: "Merge"
+                title: "Merge",
+                type: "",
             },
         ]
     },
@@ -77,6 +91,10 @@ export const ModelMenuItems = [
         list: [
             {
                 title: "Custom",
+                type: "codeNode",
+                data: {
+                    placeHolder: "Code goes here"
+                },
                 onClick: (elements, setElements) => {
                     setElements((elements) => {
                         return [
