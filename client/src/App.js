@@ -3,9 +3,11 @@ import ReactFlow, { addEdge, Background } from 'react-flow-renderer'
 import './App.css'
 import ModelMenu from './components/ModelMenu/ModelMenu';
 import CodeBlock from './components/CodeBlock/CodeBlock';
+import ReshapeBlock from './components/ReshapeBlock/ReshapeBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
+    reshapeNode: ReshapeBlock,
 };
 
 const initialElements = [];
