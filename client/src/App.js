@@ -8,10 +8,12 @@ import './App.css'
 import ModelMenu from './components/ModelMenu/ModelMenu';
 import CodeBlock from './components/CodeBlock/CodeBlock';
 import ReshapeBlock from './components/ReshapeBlock/ReshapeBlock';
+import GrayscaleBlock from './components/GrayscaleBlock/GrayscaleBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
     reshapeNode: ReshapeBlock,
+    grayscaleNode: GrayscaleBlock
 };
 
 const initialElements = [];

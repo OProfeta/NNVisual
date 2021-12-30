@@ -13,29 +13,13 @@ export const ModelMenuItems = [
                     Y: 0,
                     Z: 0
                 },
-                onClick: (elements, setElements) => {
-                    setElements((elements) => {
-                        return [
-                            ...elements,
-                            {
-                                id: elements.length.toString(),
-                                type: 'reshapeNode',
-                                data: {
-                                    id: elements.length.toString(),
-                                    X: 0,
-                                    Y: 0,
-                                    Z: 0
-                                },
-                                style: { border: '1px solid #777', padding: 10, background: "white" },
-                                position: { x: 251, y: 251 }
-                            }
-                        ]
-                    })
-                }
             },
             {
                 title: "Grayscale",
-                type: "",
+                type: "grayscaleNode",
+                data: {
+                    
+                }
             },
             {
                 title: "OneHot",
@@ -95,23 +79,6 @@ export const ModelMenuItems = [
                 data: {
                     placeHolder: "Code goes here"
                 },
-                onClick: (elements, setElements) => {
-                    setElements((elements) => {
-                        return [
-                            ...elements,
-                            {
-                                id: elements.length.toString(),
-                                type: 'codeNode',
-                                data: {
-                                    id: elements.length.toString(),
-                                    placeHolder: "Code goes here"
-                                },
-                                style: { border: '1px solid #777', padding: 10, background: "white" },
-                                position: { x: 251, y: 251 }
-                            }
-                        ]
-                    })
-                }
             },
         ]
     },
