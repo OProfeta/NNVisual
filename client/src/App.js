@@ -13,6 +13,7 @@ import OneHotBlock from './components/OneHotBlock/OneHotBlock';
 import RescaleBlock from './components/RescaleBlock/RescaleBlock';
 import DenseBlock from './components/DenseBlock/DenseBlock';
 import ConvolutionBlock from './components/ConvolutionBlock/ConvolutionBlock';
+import RecurrentBlock from './components/RecurrentBlock/RecurrentBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
@@ -21,7 +22,8 @@ const nodeTypes = {
     oneHotNode: OneHotBlock,
     rescaleNode: RescaleBlock,
     denseNode: DenseBlock,
-    convolutionNode: ConvolutionBlock
+    convolutionNode: ConvolutionBlock,
+    recurrentNode: RecurrentBlock
 };
 
 const initialElements = [];
