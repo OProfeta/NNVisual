@@ -10,12 +10,14 @@ import CodeBlock from './components/CodeBlock/CodeBlock';
 import ReshapeBlock from './components/ReshapeBlock/ReshapeBlock';
 import GrayscaleBlock from './components/GrayscaleBlock/GrayscaleBlock';
 import OneHotBlock from './components/OneHotBlock/OneHotBlock';
+import RescaleBlock from './components/RescaleBlock/RescaleBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
     reshapeNode: ReshapeBlock,
     grayscaleNode: GrayscaleBlock,
-    oneHotNode: OneHotBlock
+    oneHotNode: OneHotBlock,
+    rescaleNode: RescaleBlock
 };
 
 const initialElements = [];

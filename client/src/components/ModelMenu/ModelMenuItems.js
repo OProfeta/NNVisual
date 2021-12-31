@@ -30,7 +30,11 @@ export const ModelMenuItems = [
             },
             {
                 title: "Rescale",
-                type: "",
+                type: "rescaleNode",
+                data: {
+                    width: 0,
+                    height: 0
+                }
             },
         ]
     },
