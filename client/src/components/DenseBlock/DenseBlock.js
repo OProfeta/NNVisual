@@ -48,7 +48,7 @@ export default memo(({ data, isConnectable }) => {
                 <input 
                     type="radio"
                     id={"input_none_"+data.id}
-                    name={"input_none"+data.id}
+                    name={"input_none_"+data.id}
                     value="none"
                     onChange={onActivationFunctionValueChange}
                     checked={activationFunction === "none"}

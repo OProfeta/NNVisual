@@ -12,6 +12,7 @@ import GrayscaleBlock from './components/GrayscaleBlock/GrayscaleBlock';
 import OneHotBlock from './components/OneHotBlock/OneHotBlock';
 import RescaleBlock from './components/RescaleBlock/RescaleBlock';
 import DenseBlock from './components/DenseBlock/DenseBlock';
+import ConvolutionBlock from './components/ConvolutionBlock/ConvolutionBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
@@ -19,7 +20,8 @@ const nodeTypes = {
     grayscaleNode: GrayscaleBlock,
     oneHotNode: OneHotBlock,
     rescaleNode: RescaleBlock,
-    denseNode: DenseBlock
+    denseNode: DenseBlock,
+    convolutionNode: ConvolutionBlock
 };
 
 const initialElements = [];
