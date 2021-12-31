@@ -53,7 +53,12 @@ export const ModelMenuItems = [
             },
             {
                 title: "Convolution",
-                type: "",
+                type: "convolutionNode",
+                data: {
+                    patch: 0,
+                    stride: 0,
+                    feature: 0
+                }
             },
             {
                 title: "Recurrent",
