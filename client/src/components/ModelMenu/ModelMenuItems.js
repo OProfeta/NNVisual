@@ -62,7 +62,10 @@ export const ModelMenuItems = [
             },
             {
                 title: "Recurrent",
-                type: "",
+                type: "recurrentNode",
+                data: {
+                    neurons: 0,
+                }
             },
         ]
     },
