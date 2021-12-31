@@ -15,16 +15,31 @@ export default memo(({ data, isConnectable }) => {
             <div>
                 Reshape Node: {data.id}
             </div>
-            <label htmlFor="input_X">X: </label>
-            <input type="number" id="input_X" name="input_X" defaultValue={data.X}/>
+            <label htmlFor={"input_X_"+data.id}>X: </label>
+            <input 
+                type="number" 
+                id={"input_X_"+data.id} 
+                name={"input_X_"+data.id}
+                defaultValue={data.X}
+            />
             <br/>
 
-            <label htmlFor="input_Y">Y: </label>
-            <input type="number" id="input_Y" name="input_Y" defaultValue={data.Y}/>
+            <label htmlFor={"input_Y_"+data.id}>Y: </label>
+            <input 
+                type="number" 
+                id={"input_Y_"+data.id} 
+                name={"input_Y_"+data.id} 
+                defaultValue={data.Y}
+            />
             <br/>
 
-            <label htmlFor="input_Z">Z: </label>
-            <input type="number" id="input_Z" name="input_Z" defaultValue={data.Z}/>
+            <label htmlFor={"input_Z_"+data.id}>Z: </label>
+            <input 
+                type="number" 
+                id={"input_Z_"+data.id} 
+                name={"input_Z_"+data.id} 
+                defaultValue={data.Z}
+            />
             <br/>
 
             <Handle

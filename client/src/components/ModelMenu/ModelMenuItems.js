@@ -46,7 +46,10 @@ export const ModelMenuItems = [
         list: [
             {
                 title: "Dense",
-                type: "",
+                type: "denseNode",
+                data: {
+                    
+                }
             },
             {
                 title: "Convolution",

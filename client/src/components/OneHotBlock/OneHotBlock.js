@@ -15,8 +15,13 @@ export default memo(({ data, isConnectable }) => {
             <div>
                 OneHot Node: {data.id}
             </div>
-            <label htmlFor="input_classes">Number of Classes: </label>
-            <input type="number" id="input_classes" name="input_classes" defaultValue={data.classes}/>
+            <label htmlFor={"input_classes_"+data.id}>Number of Classes: </label>
+            <input 
+                type="number" 
+                id={"input_classes_"+data.id} 
+                name={"input_classes_"+data.id} 
+                defaultValue={data.classes}
+            />
             <Handle
                 type="source"
                 position="right"
