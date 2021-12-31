@@ -23,7 +23,10 @@ export const ModelMenuItems = [
             },
             {
                 title: "OneHot",
-                type: "",
+                type: "oneHotNode",
+                data: {
+                    classes: 0
+                }
             },
             {
                 title: "Rescale",
