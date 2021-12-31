@@ -2,7 +2,7 @@ import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 
-const DenseBlock = ({ data, isConnectable }) => {
+export default memo(({ data, isConnectable }) => {
 
     const actFun = "sigmoid";
     const drop = "no";
@@ -34,11 +34,11 @@ const DenseBlock = ({ data, isConnectable }) => {
             <div>
                 Dense Node: {data.id}
             </div>
-            <label htmlFor="input_neurons">Neurons: </label>
+            <label htmlFor={"input_neurons_"+data.id}>Neurons: </label>
             <input 
                 type="number" 
-                id="input_neurons" 
-                name="input_neurons" 
+                id={"input_neurons_"+data.id}
+                name={"input_neurons_"+data.id}
                 defaultValue={data.neurons}
             />
             <br />
@@ -150,6 +150,4 @@ const DenseBlock = ({ data, isConnectable }) => {
             />
         </>
     )
-};
-
-export default DenseBlock
+});

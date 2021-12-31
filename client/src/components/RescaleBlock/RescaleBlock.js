@@ -15,11 +15,21 @@ export default memo(({ data, isConnectable }) => {
             <div>
                 Rescale Node: {data.id}
             </div>
-            <label htmlFor="input_width">Width: </label>
-            <input type="number" id="input_width" name="input_width" defaultValue={data.width}/>
+            <label htmlFor={"input_width_"+data.id}>Width: </label>
+            <input 
+                type="number" 
+                id={"input_width_"+data.id} 
+                name={"input_width_"+data.id} 
+                defaultValue={data.width}
+            />
             <br />
-            <label htmlFor="input_height">Height: </label>
-            <input type="number" id="input_height" name="input_height" defaultValue={data.height}/>
+            <label htmlFor={"input_height_"+data.id}>Height: </label>
+            <input 
+                type="number" 
+                id={"input_height_"+data.id} 
+                name={"input_height_"+data.id} 
+                defaultValue={data.height}
+            />
             <Handle
                 type="source"
                 position="right"
