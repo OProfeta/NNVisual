@@ -11,13 +11,15 @@ import ReshapeBlock from './components/ReshapeBlock/ReshapeBlock';
 import GrayscaleBlock from './components/GrayscaleBlock/GrayscaleBlock';
 import OneHotBlock from './components/OneHotBlock/OneHotBlock';
 import RescaleBlock from './components/RescaleBlock/RescaleBlock';
+import DenseBlock from './components/DenseBlock/DenseBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
     reshapeNode: ReshapeBlock,
     grayscaleNode: GrayscaleBlock,
     oneHotNode: OneHotBlock,
-    rescaleNode: RescaleBlock
+    rescaleNode: RescaleBlock,
+    denseNode: DenseBlock
 };
 
 const initialElements = [];
@@ -69,10 +71,9 @@ function App() {
             style: { border: '1px solid #777', padding: 10, background: "white" },
         };
         newNode.data.id = newNode.id;
-
         setElements((es) => es.concat(newNode));
     }
-
+    
     return (
         <div style={{ height: "100%", backgroundColor: "#32252a" }}>
             <ReactFlowProvider>
