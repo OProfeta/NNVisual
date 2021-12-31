@@ -14,6 +14,7 @@ import RescaleBlock from './components/RescaleBlock/RescaleBlock';
 import DenseBlock from './components/DenseBlock/DenseBlock';
 import ConvolutionBlock from './components/ConvolutionBlock/ConvolutionBlock';
 import RecurrentBlock from './components/RecurrentBlock/RecurrentBlock';
+import ArgmaxBlock from './components/ArgmaxBlock/ArgmaxBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
@@ -23,7 +24,8 @@ const nodeTypes = {
     rescaleNode: RescaleBlock,
     denseNode: DenseBlock,
     convolutionNode: ConvolutionBlock,
-    recurrentNode: RecurrentBlock
+    recurrentNode: RecurrentBlock,
+    argmaxNode: ArgmaxBlock
 };
 
 const initialElements = [];
