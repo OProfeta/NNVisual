@@ -77,7 +77,10 @@ export const ModelMenuItems = [
         list: [
             {
                 title: "Argmax",
-                type: "",
+                type: "argmaxNode",
+                data: {
+                    dimension: 0,
+                }
             },
             {
                 title: "Merge",
