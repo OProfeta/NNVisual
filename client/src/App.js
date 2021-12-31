@@ -9,11 +9,13 @@ import ModelMenu from './components/ModelMenu/ModelMenu';
 import CodeBlock from './components/CodeBlock/CodeBlock';
 import ReshapeBlock from './components/ReshapeBlock/ReshapeBlock';
 import GrayscaleBlock from './components/GrayscaleBlock/GrayscaleBlock';
+import OneHotBlock from './components/OneHotBlock/OneHotBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
     reshapeNode: ReshapeBlock,
-    grayscaleNode: GrayscaleBlock
+    grayscaleNode: GrayscaleBlock,
+    oneHotNode: OneHotBlock
 };
 
 const initialElements = [];
