@@ -1,6 +1,6 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 
-import { Handle } from "react-flow-renderer";
+import { Handle, useUpdateNodeInternals } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
 
@@ -15,15 +15,17 @@ export default memo(({ data, isConnectable }) => {
     const h = [];
     const [handles, setHandles] = useState(h);
 
+    
     var onInputsValueChange = (event) => {
         let han = [];
         let maxInputs = 10;
         let numInputs = event.target.value > maxInputs ? 10 : event.target.value;
         for (let i = 0; i < numInputs; i++) {
-            han.push(<Handle 
+            han.push(<Handle
+                key={i} 
                 type="target"
                 position="left"
-                id="b"
+                id={i}
                 style={{ background: '#555', top: 10 + (10 * i) }}
                 onConnect={(params) => console.log('handle onConnect', params)}
                 isConnectable={isConnectable}
@@ -31,7 +33,12 @@ export default memo(({ data, isConnectable }) => {
         }
         setHandles(han);
     }
+    const updateNodeInternals = useUpdateNodeInternals();
 
+    useEffect(() => {
+        updateNodeInternals(data.id);
+    }, [handles])
+        
     return (
         <>
             <div>
