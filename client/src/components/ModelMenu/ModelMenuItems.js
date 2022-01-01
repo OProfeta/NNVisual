@@ -84,7 +84,10 @@ export const ModelMenuItems = [
             },
             {
                 title: "Merge",
-                type: "",
+                type: "mergeNode",
+                data: {
+                    inputs: 0,
+                }
             },
         ]
     },

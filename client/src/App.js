@@ -15,6 +15,7 @@ import DenseBlock from './components/DenseBlock/DenseBlock';
 import ConvolutionBlock from './components/ConvolutionBlock/ConvolutionBlock';
 import RecurrentBlock from './components/RecurrentBlock/RecurrentBlock';
 import ArgmaxBlock from './components/ArgmaxBlock/ArgmaxBlock';
+import MergeBlock from './components/MergeBlock/MergeBlock';
 
 const nodeTypes = {
     codeNode: CodeBlock,
@@ -25,7 +26,8 @@ const nodeTypes = {
     denseNode: DenseBlock,
     convolutionNode: ConvolutionBlock,
     recurrentNode: RecurrentBlock,
-    argmaxNode: ArgmaxBlock
+    argmaxNode: ArgmaxBlock,
+    mergeNode: MergeBlock
 };
 
 const initialElements = [];
@@ -79,7 +81,7 @@ function App() {
         newNode.data.id = newNode.id;
         setElements((es) => es.concat(newNode));
     }
-    
+    console.log(elements);
     return (
         <div style={{ height: "100%", backgroundColor: "#32252a" }}>
             <ReactFlowProvider>

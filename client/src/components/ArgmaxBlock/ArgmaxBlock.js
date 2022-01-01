@@ -13,7 +13,7 @@ export default memo(({ data, isConnectable }) => {
                 isConnectable={isConnectable}
             />
             <div>
-                Recurrent Node: {data.id}
+                Argmax Node: {data.id}
             </div>
 
             <label htmlFor={"input_dimension_"+data.id}>Dimension: </label>
