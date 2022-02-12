@@ -48,16 +48,26 @@ export const ModelMenuItems = [
                 title: "Dense",
                 type: "denseNode",
                 data: {
-                    
+                    neurons: 0,
+                    activationFunction: "sigmoid",
+                    dropOut: "no",
+                    batchNormalization: "no"
                 }
             },
             {
                 title: "Convolution",
                 type: "convolutionNode",
                 data: {
+                    convolutionType: "conv",
+                    dimension: "2d",
                     patch: 0,
                     stride: 0,
-                    feature: 0
+                    feature: 0,
+                    zeroPadding: "same",
+                    activationFunction: "sigmoid",
+                    dropOut: "no",
+                    batchNormalization: "no",
+                    pooling: "no"
                 }
             },
             {
@@ -87,6 +97,7 @@ export const ModelMenuItems = [
                 type: "mergeNode",
                 data: {
                     inputs: 0,
+                    dimension: -1,
                 }
             },
         ]

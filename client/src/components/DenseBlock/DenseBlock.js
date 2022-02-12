@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 
 import { Handle } from "react-flow-renderer";
 
@@ -22,6 +22,18 @@ export default memo(({ data, isConnectable }) => {
         setBatchNormalization(event.target.value);
     }
 
+    useEffect(() => {
+        data.activationFunction = activationFunction;
+    }, [activationFunction]);
+
+    useEffect(() => {
+        data.dropOut = dropout;
+    }, [dropout]);
+
+    useEffect(() => {
+        data.batchNormalization = batchNormalization;
+    }, [batchNormalization]);
+
     return (
         <>
             <Handle 
@@ -40,6 +52,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_neurons_"+data.id}
                 name={"input_neurons_"+data.id}
                 defaultValue={data.neurons}
+                onChange={(e) => data.neurons = parseInt(e.target.value)}
             />
             <br />
             <div>

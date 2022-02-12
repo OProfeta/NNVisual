@@ -21,6 +21,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_X_"+data.id} 
                 name={"input_X_"+data.id}
                 defaultValue={data.X}
+                onChange={(e) => data.X = parseInt(e.target.value)}
             />
             <br/>
 
@@ -30,6 +31,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_Y_"+data.id} 
                 name={"input_Y_"+data.id} 
                 defaultValue={data.Y}
+                onChange={(e) => data.Y = parseInt(e.target.value)}
             />
             <br/>
 
@@ -39,6 +41,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_Z_"+data.id} 
                 name={"input_Z_"+data.id} 
                 defaultValue={data.Z}
+                onChange={(e) => data.Z = parseInt(e.target.value)}
             />
             <br/>
 

@@ -20,24 +20,31 @@ export default memo(({ data, isConnectable }) => {
     const [pooling, setPooling] = useState(pool);
 
     var onConvolutionTypeValueChange = (event) => {
+        data.convolutionType = event.target.value;
         setConvolutionType(event.target.value);
     }
     var onDimensionValueChange = (event) => {
+        data.dimension = event.target.value;
         setDimension(event.target.value);
     }
     var onZeroPaddingValueChange = (event) => {
+        data.zeroPadding = event.target.value;
         setZeroPadding(event.target.value);
     }
     var onActivationFunctionValueChange = (event) => {
+        data.activationFunction = event.target.value;
         setActivationFunction(event.target.value);
     }
     var onDropoutValueChange = (event) => {
+        data.dropOut = event.target.value;
         setDropout(event.target.value);
     }
     var onBatchNormalizationValueChange = (event) => {
+        data.batchNormalization = event.target.value;
         setBatchNormalization(event.target.value);
     }
     var onPoolingValueChange = (event) => {
+        data.pooling = event.target.value;
         setPooling(event.target.value);
     }
 
@@ -128,6 +135,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_patch_"+data.id}
                 name={"input_patch_"+data.id}
                 defaultValue={data.patch}
+                onChange={(e) => data.patch = parseInt(e.target.value)}
             />
 
             <br />
@@ -137,6 +145,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_stride_"+data.id}
                 name={"input_stride_"+data.id}
                 defaultValue={data.stride}
+                onChange={(e) => data.stride = parseInt(e.target.value)}
             />
 
             <br />
@@ -146,6 +155,7 @@ export default memo(({ data, isConnectable }) => {
                 id={"input_feature_"+data.id}
                 name={"input_feature_"+data.id}
                 defaultValue={data.feature}
+                onChange={(e) => data.feature = parseInt(e.target.value)}
             />
 
             <br />
@@ -168,6 +178,7 @@ export default memo(({ data, isConnectable }) => {
                 onChange={onZeroPaddingValueChange}
                 checked={zeroPadding === "valid"}
             />Valid
+            <br />
 
             <label>Activation function: </label>
             <br />
@@ -206,6 +217,7 @@ export default memo(({ data, isConnectable }) => {
                 onChange={onActivationFunctionValueChange}
                 checked={activationFunction === "tanh"}
             />Tanh
+            <br />
 
             <label>Dropout: </label>
             <br />
@@ -226,8 +238,29 @@ export default memo(({ data, isConnectable }) => {
                 onChange={onDropoutValueChange}
                 checked={dropout === "no"}
             />No
-
             <br />
+
+            <label>Batch Normalization: </label>
+            <br />
+            <input 
+                type="radio"
+                id={"input_batchNormalizationYes_"+data.id}
+                name={"input_batchNormalizationYes_"+data.id}
+                value="yes"
+                onChange={onBatchNormalizationValueChange}
+                checked={batchNormalization === "yes"}
+            />Yes
+            <br />
+            <input 
+                type="radio"
+                id={"input_batchNormalizationNo_"+data.id}
+                name={"input_batchNormalizationNo_"+data.id}
+                value="no"
+                onChange={onBatchNormalizationValueChange}
+                checked={batchNormalization === "no"}
+            />No
+            <br />
+
             <label>Pooling: </label>
             <br />
             <input 
