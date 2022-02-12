@@ -1,6 +1,9 @@
 import os
+import json
+import modelBuilder
 
 from flask import Flask
+from flask import request
 
 
 def create_app(test_config=None):
@@ -32,5 +35,24 @@ def create_app(test_config=None):
     @app.route('/members')
     def members():
         return {"members": ["Member1", "Member2", "Member3"]}
+
+    @app.route('/elements', methods=['POST'])
+    def elements():
+        cwd = os.getcwd()
+        print(cwd)
+        elements_json = json.loads(request.data)
+        # modelBuilder.teste()
+        modelBuilder.create_model(elements_json)
+        return 'hm'
+
+    @app.route('/load_dataset', methods=['POST'])
+    def load_dataset():
+        dataset_location = json.loads(request.data)
+        inputs, target = modelBuilder.load_dataset(dataset_location)
+        response = {
+            'inputs': inputs,
+            'target': target
+        }
+        return response
 
     return app
