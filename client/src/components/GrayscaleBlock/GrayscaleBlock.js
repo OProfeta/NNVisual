@@ -1,8 +1,11 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
+
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
     return (
         <>
             <Handle 
@@ -15,6 +18,15 @@ export default memo(({ data, isConnectable }) => {
             <div>
                 Grayscale Node: {data.id}
             </div>
+
+            <button onClick={() => setIsCollapsed(!isCollapsed)}>Show</button>
+            <br />
+
+            {!isCollapsed &&
+                <>
+                </>
+            }
+
             <Handle
                 type="source"
                 position="right"

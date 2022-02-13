@@ -3,6 +3,8 @@ import { Handle } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
 
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
     return (
         <>
             <Handle
@@ -16,13 +18,20 @@ export default memo(({ data, isConnectable }) => {
                 Argmax Node: {data.id}
             </div>
 
-            <label htmlFor={"input_dimension_"+data.id}>Dimension: </label>
-            <input 
-                type="number" 
-                id={"input_dimension_"+data.id}
-                name={"input_dimension_"+data.id}
-                defaultValue={data.dimension}
-            />
+            <button onClick={() => setIsCollapsed(!isCollapsed)}>Show</button>
+            <br />
+
+            {!isCollapsed && 
+                <>
+                    <label htmlFor={"input_dimension_"+data.id}>Dimension: </label>
+                    <input 
+                        type="number" 
+                        id={"input_dimension_"+data.id}
+                        name={"input_dimension_"+data.id}
+                        defaultValue={data.dimension}
+                    />
+                </>
+            }
 
             <Handle
                 type="source"

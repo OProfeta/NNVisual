@@ -7,6 +7,7 @@ export default memo(({ data, isConnectable }) => {
     const op = "addition";
 
     const [operation, setOperation] = useState(op);
+    const [isCollapsed, setIsCollapsed] = useState(false);
 
     var onOperationValueChange = (event) => {
         setOperation(event.target.value);
@@ -57,54 +58,62 @@ export default memo(({ data, isConnectable }) => {
             {handles}
 
             <br />
-            <div>
-                <label>Operation: </label>
-                <br />
-                <input 
-                    type="radio"
-                    id={"input_concatenate_"+data.id}
-                    name={"input_concatenate_"+data.id}
-                    value="concatenate"
-                    onChange={onOperationValueChange}
-                    checked={operation === "concatenate"}
-                />Concatenate
-                <br />
-                <input 
-                    type="radio"
-                    id={"input_subtraction_"+data.id}
-                    name={"input_subtraction_"+data.id}
-                    value="subtraction"
-                    onChange={onOperationValueChange}
-                    checked={operation === "subtraction"}
-                />Subtraction
-                <br />
-                <input 
-                    type="radio"
-                    id={"input_addition_"+data.id}
-                    name={"input_addition_"+data.id}
-                    value="addition"
-                    onChange={onOperationValueChange}
-                    checked={operation === "addition"}
-                />Addition
-                <br />
-                <input 
-                    type="radio"
-                    id={"input_multiplication_"+data.id}
-                    name={"input_multiplication_"+data.id}
-                    value="multiplication"
-                    onChange={onOperationValueChange}
-                    checked={operation === "multiplication"}
-                />Multiplication
-                <br />
-                <input 
-                    type="radio"
-                    id={"input_division_"+data.id}
-                    name={"input_division_"+data.id}
-                    value="division"
-                    onChange={onOperationValueChange}
-                    checked={operation === "division"}
-                />Division
-            </div>
+            <button onClick={() => setIsCollapsed(!isCollapsed)}>Show</button>
+            <br />
+
+            {!isCollapsed &&
+                <>
+                    <div>
+                        <label>Operation: </label>
+                        <br />
+                        <input 
+                            type="radio"
+                            id={"input_concatenate_"+data.id}
+                            name={"input_concatenate_"+data.id}
+                            value="concatenate"
+                            onChange={onOperationValueChange}
+                            checked={operation === "concatenate"}
+                        />Concatenate
+                        <br />
+                        <input 
+                            type="radio"
+                            id={"input_subtraction_"+data.id}
+                            name={"input_subtraction_"+data.id}
+                            value="subtraction"
+                            onChange={onOperationValueChange}
+                            checked={operation === "subtraction"}
+                        />Subtraction
+                        <br />
+                        <input 
+                            type="radio"
+                            id={"input_addition_"+data.id}
+                            name={"input_addition_"+data.id}
+                            value="addition"
+                            onChange={onOperationValueChange}
+                            checked={operation === "addition"}
+                        />Addition
+                        <br />
+                        <input 
+                            type="radio"
+                            id={"input_multiplication_"+data.id}
+                            name={"input_multiplication_"+data.id}
+                            value="multiplication"
+                            onChange={onOperationValueChange}
+                            checked={operation === "multiplication"}
+                        />Multiplication
+                        <br />
+                        <input 
+                            type="radio"
+                            id={"input_division_"+data.id}
+                            name={"input_division_"+data.id}
+                            value="division"
+                            onChange={onOperationValueChange}
+                            checked={operation === "division"}
+                        />Division
+                    </div>
+                </>
+            }
+
             <Handle
                 type="source"
                 position="right"

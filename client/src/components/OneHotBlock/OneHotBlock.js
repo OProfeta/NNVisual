@@ -1,8 +1,11 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 
 import { Handle } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
+
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
     return (
         <>
             <Handle 
@@ -15,13 +18,22 @@ export default memo(({ data, isConnectable }) => {
             <div>
                 OneHot Node: {data.id}
             </div>
-            <label htmlFor={"input_classes_"+data.id}>Number of Classes: </label>
-            <input 
-                type="number" 
-                id={"input_classes_"+data.id} 
-                name={"input_classes_"+data.id} 
-                defaultValue={data.classes}
-            />
+
+            <button onClick={() => setIsCollapsed(!isCollapsed)}>Show</button>
+            <br />
+
+            {!isCollapsed &&
+                <>
+                    <label htmlFor={"input_classes_"+data.id}>Number of Classes: </label>
+                    <input 
+                        type="number" 
+                        id={"input_classes_"+data.id} 
+                        name={"input_classes_"+data.id} 
+                        defaultValue={data.classes}
+                    />
+                </>
+            }
+
             <Handle
                 type="source"
                 position="right"
