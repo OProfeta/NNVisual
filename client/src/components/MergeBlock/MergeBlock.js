@@ -10,6 +10,7 @@ export default memo(({ data, isConnectable }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     var onOperationValueChange = (event) => {
+        data.operation = event.target.value;
         setOperation(event.target.value);
     }
 

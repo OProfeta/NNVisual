@@ -10,6 +10,7 @@ export default memo(({ data, isConnectable }) => {
     const drop = "no";
     const batchNormal = "no";
     const pool = "no";
+    const poolType = "max_pooling";
     const collapsed = false;
 
     const [convolutionType, setConvolutionType] = useState(convType);
@@ -19,7 +20,9 @@ export default memo(({ data, isConnectable }) => {
     const [dropout, setDropout] = useState(drop);
     const [batchNormalization, setBatchNormalization] = useState(batchNormal);
     const [pooling, setPooling] = useState(pool);
+    const [poolingType, setPoolingType] = useState(poolType);
     const [isCollapsed, setIsCollapsed] = useState(collapsed);
+
 
     var onConvolutionTypeValueChange = (event) => {
         data.convolutionType = event.target.value;
@@ -38,7 +41,7 @@ export default memo(({ data, isConnectable }) => {
         setActivationFunction(event.target.value);
     }
     var onDropoutValueChange = (event) => {
-        data.dropOut = event.target.value;
+        data.dropout = event.target.value;
         setDropout(event.target.value);
     }
     var onBatchNormalizationValueChange = (event) => {
@@ -48,6 +51,10 @@ export default memo(({ data, isConnectable }) => {
     var onPoolingValueChange = (event) => {
         data.pooling = event.target.value;
         setPooling(event.target.value);
+    }
+    var onPoolingTypeValueChange = (event) => {
+        data.poolingType = event.target.value;
+        setPoolingType(event.target.value);
     }
 
     return (
@@ -108,33 +115,94 @@ export default memo(({ data, isConnectable }) => {
 
                     <br />
                     <label>Dimension: </label>
-                    <br />
-                    <input 
-                        type="radio"
-                        id={"input_1d_"+data.id}
-                        name={"input_1d_"+data.id}
-                        value="1d"
-                        onChange={onDimensionValueChange}
-                        checked={dimension === "1d"}
-                    />1D
-                    <br />
-                    <input 
-                        type="radio"
-                        id={"input_2d_"+data.id}
-                        name={"input_2d_"+data.id}
-                        value="2d"
-                        onChange={onDimensionValueChange}
-                        checked={dimension === "2d"}
-                    />2D
-                    <br />
-                    <input 
-                        type="radio"
-                        id={"input_3d_"+data.id}
-                        name={"input_3d_"+data.id}
-                        value="3d"
-                        onChange={onDimensionValueChange}
-                        checked={dimension === "3d"}
-                    />3D
+                    {convolutionType === "conv" &&
+                        <>
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_1d_"+data.id}
+                                name={"input_1d_"+data.id}
+                                value="1d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "1d"}
+                            />1D
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_2d_"+data.id}
+                                name={"input_2d_"+data.id}
+                                value="2d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "2d"}
+                            />2D
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_3d_"+data.id}
+                                name={"input_3d_"+data.id}
+                                value="3d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "3d"}
+                            />3D
+                        </>
+                    }
+                    {convolutionType === "transpose" &&
+                        <>
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_2d_"+data.id}
+                                name={"input_2d_"+data.id}
+                                value="2d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "2d"}
+                            />2D
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_3d_"+data.id}
+                                name={"input_3d_"+data.id}
+                                value="3d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "3d"}
+                            />3D
+                        </>
+                    }
+                    {convolutionType === "separable" &&
+                        <>
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_1d_"+data.id}
+                                name={"input_1d_"+data.id}
+                                value="1d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "1d"}
+                            />1D
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_2d_"+data.id}
+                                name={"input_2d_"+data.id}
+                                value="2d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "2d"}
+                            />2D
+                        </>
+                    }
+                    {convolutionType === "depthwise" &&
+                        <>
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_2d_"+data.id}
+                                name={"input_2d_"+data.id}
+                                value="2d"
+                                onChange={onDimensionValueChange}
+                                checked={dimension === "2d"}
+                            />2D
+                        </>
+                    }
 
                     <br />
                     <label htmlFor={"input_patch_"+data.id}>Patch size: </label>
@@ -248,6 +316,20 @@ export default memo(({ data, isConnectable }) => {
                     />No
                     <br />
 
+                    {dropout === "yes" &&
+                        <>
+                            <label htmlFor={"input_dropout_probability_"+data.id}>Keep probability: </label>
+                            <input 
+                                type="number" 
+                                id={"input_dropout_probability_"+data.id}
+                                name={"input_dropout_probability_"+data.id}
+                                defaultValue={data.dropout_probability}
+                                onChange={(e) => data.dropout_probability = parseInt(e.target.value)}
+                            />
+                            <br />
+                        </>
+                    }
+
                     <label>Batch Normalization: </label>
                     <br />
                     <input 
@@ -288,6 +370,42 @@ export default memo(({ data, isConnectable }) => {
                         onChange={onPoolingValueChange}
                         checked={pooling === "no"}
                     />No
+
+                    {pooling === "yes" &&
+                        <>
+                            <br />
+                            <label>Pooling type: </label>
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_pooling_type_"+data.id}
+                                name={"input_pooling_type_"+data.id}
+                                value="max_pooling"
+                                onChange={onPoolingTypeValueChange}
+                                checked={poolingType === "max_pooling"}
+                            />Max pooling
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_pooling_type_"+data.id}
+                                name={"input_pooling_type_"+data.id}
+                                value="mean_pooling"
+                                onChange={onPoolingTypeValueChange}
+                                checked={poolingType === "mean_pooling"}
+                            />Mean pooling
+                            <br />
+
+                            <label htmlFor={"input_pooling_area_"+data.id}>Pooling area: </label>
+                            <input 
+                                type="number" 
+                                id={"input_pooling_area_"+data.id}
+                                name={"input_pooling_area_"+data.id}
+                                defaultValue={data.dropout_probability}
+                                onChange={(e) => data.dropout_probability = parseInt(e.target.value)}
+                            />
+                            <br />
+                        </>
+                    }
                 </>
             }
 

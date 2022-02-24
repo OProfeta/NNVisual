@@ -65,9 +65,11 @@ export const ModelMenuItems = [
                     feature: 0,
                     zeroPadding: "same",
                     activationFunction: "sigmoid",
-                    dropOut: "no",
+                    dropout: "no",
+                    dropout_probability: 1,
                     batchNormalization: "no",
-                    pooling: "no"
+                    pooling: "no",
+                    poolingType: "max_pooling",
                 }
             },
             {
