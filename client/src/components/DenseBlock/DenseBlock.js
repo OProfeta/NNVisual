@@ -28,11 +28,11 @@ export default memo(({ data, isConnectable }) => {
     }, [activationFunction]);
 
     useEffect(() => {
-        data.dropOut = dropout;
+        data.dropout = dropout;
     }, [dropout]);
 
     useEffect(() => {
-        data.batchNormalization = batchNormalization;
+        data.batch_normalization = batchNormalization;
     }, [batchNormalization]);
 
     return (
@@ -140,6 +140,21 @@ export default memo(({ data, isConnectable }) => {
                             checked={dropout === "no"}
                         />No
                     </div>
+
+                    {dropout === "yes" && 
+                        <>
+                            <label htmlFor={"input_dropout_probability_"+data.id}>Keep probability: </label>
+                            <input 
+                                type="number" 
+                                id={"input_dropout_probability_"+data.id}
+                                name={"input_dropout_probability_"+data.id}
+                                defaultValue={data.dropout_probability}
+                                onChange={(e) => data.dropout_probability = parseInt(e.target.value)}
+                            />
+                            <br />
+                        </>
+                    }
+
                     <div>
                         <label>Batch Normalization: </label>
                         <br />

@@ -1,1 +1,315 @@
-[{"id":"0","type":"inputNode","position":{"x":20,"y":20},"data":{"name":"image_path","id":"0"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"id":"1","type":"inputNode","position":{"x":20,"y":80},"data":{"name":"n_citi","id":"1"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"id":"2","type":"inputNode","position":{"x":20,"y":140},"data":{"name":"bed","id":"2"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"id":"3","type":"inputNode","position":{"x":20,"y":200},"data":{"name":"bath","id":"3"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"id":"4","type":"inputNode","position":{"x":20,"y":260},"data":{"name":"sqft","id":"4"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"id":"5","type":"targetNode","position":{"x":500,"y":20},"data":{"name":"price","id":"5"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"id":"6","type":"convolutionNode","position":{"x":364,"y":265.09375},"data":{"convolutionType":"conv","dimension":"2d","patch":3,"stride":2,"feature":8,"zeroPadding":"same","activationFunction":"sigmoid","dropout":"no","dropout_probability":1,"batchNormalization":"no","pooling":"no","poolingType":"max_pooling","id":"6"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"source":"0","sourceHandle":"a","target":"6","targetHandle":null,"id":"reactflow__edge-0a-6null"},{"id":"7","type":"denseNode","position":{"x":557,"y":280.09375},"data":{"neurons":128,"activationFunction":"relu","dropOut":"no","batchNormalization":"no","id":"7"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"source":"6","sourceHandle":"a","target":"7","targetHandle":null,"id":"reactflow__edge-6a-7null"},{"id":"8","type":"mergeNode","position":{"x":726,"y":264.09375},"data":{"inputs":0,"dimension":-1,"id":"8","operation":"concatenate"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"source":"7","sourceHandle":"a","target":"8","targetHandle":null,"id":"reactflow__edge-7a-8null"},{"id":"9","type":"denseNode","position":{"x":1130,"y":367.09375},"data":{"neurons":1,"activationFunction":"none","dropOut":"no","batchNormalization":"no","id":"9"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"source":"8","sourceHandle":"a","target":"9","targetHandle":null,"id":"reactflow__edge-8a-9null"},{"source":"9","sourceHandle":"a","target":"5","targetHandle":null,"id":"reactflow__edge-9a-5null"},{"id":"10","type":"denseNode","position":{"x":339,"y":361.09375},"data":{"neurons":12,"activationFunction":"sigmoid","dropOut":"no","batchNormalization":"no","id":"10"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"source":"2","sourceHandle":"a","target":"10","targetHandle":null,"id":"reactflow__edge-2a-10null"},{"source":"1","sourceHandle":"a","target":"8","targetHandle":"1","id":"reactflow__edge-1a-81"},{"source":"10","sourceHandle":"a","target":"8","targetHandle":"2","id":"reactflow__edge-10a-82"},{"id":"11","type":"denseNode","position":{"x":507,"y":435.09375},"data":{"neurons":29,"activationFunction":"sigmoid","dropOut":"no","batchNormalization":"no","id":"11"},"style":{"border":"1px solid #777","padding":10,"background":"white"}},{"source":"3","sourceHandle":"a","target":"11","targetHandle":null,"id":"reactflow__edge-3a-11null"},{"source":"11","sourceHandle":"a","target":"8","targetHandle":"3","id":"reactflow__edge-11a-83"},{"source":"4","sourceHandle":"a","target":"8","targetHandle":"4","id":"reactflow__edge-4a-84"}]
+[
+  {
+    "id": "0",
+    "type": "inputNode",
+    "position": {
+      "x": 20,
+      "y": 20
+    },
+    "data": {
+      "name": "image_path",
+      "id": "0"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "id": "1",
+    "type": "inputNode",
+    "position": {
+      "x": 20,
+      "y": 80
+    },
+    "data": {
+      "name": "n_citi",
+      "id": "1"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "id": "2",
+    "type": "inputNode",
+    "position": {
+      "x": 20,
+      "y": 140
+    },
+    "data": {
+      "name": "bed",
+      "id": "2"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "id": "3",
+    "type": "inputNode",
+    "position": {
+      "x": 20,
+      "y": 200
+    },
+    "data": {
+      "name": "bath",
+      "id": "3"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "id": "4",
+    "type": "inputNode",
+    "position": {
+      "x": 20,
+      "y": 260
+    },
+    "data": {
+      "name": "sqft",
+      "id": "4"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "id": "5",
+    "type": "targetNode",
+    "position": {
+      "x": 500,
+      "y": 20
+    },
+    "data": {
+      "name": "price",
+      "id": "5"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "id": "6",
+    "type": "convolutionNode",
+    "position": {
+      "x": 364,
+      "y": 265.09375
+    },
+    "data": {
+      "convolutionType": "conv",
+      "dimension": "2d",
+      "patch": 3,
+      "stride": 2,
+      "feature": 8,
+      "zeroPadding": "same",
+      "activationFunction": "sigmoid",
+      "dropout": "no",
+      "dropout_probability": 1,
+      "batchNormalization": "no",
+      "pooling": "no",
+      "pooling_type": "max_pooling",
+      "pooling_area": 0,
+      "pooling_stride": 0,
+      "pooling_zero_padding": "same",
+      "id": "6"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "source": "0",
+    "sourceHandle": "a",
+    "target": "6",
+    "targetHandle": null,
+    "id": "reactflow__edge-0a-6null"
+  },
+  {
+    "id": "7",
+    "type": "denseNode",
+    "position": {
+      "x": 557,
+      "y": 280.09375
+    },
+    "data": {
+      "neurons": 128,
+      "activationFunction": "relu",
+      "dropout": "no",
+      "dropout_probability": 1,
+      "batch_normalization": "no",
+      "id": "7"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "source": "6",
+    "sourceHandle": "a",
+    "target": "7",
+    "targetHandle": null,
+    "id": "reactflow__edge-6a-7null"
+  },
+  {
+    "id": "8",
+    "type": "mergeNode",
+    "position": {
+      "x": 726,
+      "y": 264.09375
+    },
+    "data": {
+      "inputs": 0,
+      "merge_dimension": -1,
+      "id": "8",
+      "operation": "concatenate"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "source": "7",
+    "sourceHandle": "a",
+    "target": "8",
+    "targetHandle": null,
+    "id": "reactflow__edge-7a-8null"
+  },
+  {
+    "id": "9",
+    "type": "denseNode",
+    "position": {
+      "x": 1130,
+      "y": 367.09375
+    },
+    "data": {
+      "neurons": 1,
+      "activationFunction": "none",
+      "dropout": "no",
+      "dropout_probability": 1,
+      "batch_normalization": "no",
+      "id": "9"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "source": "8",
+    "sourceHandle": "a",
+    "target": "9",
+    "targetHandle": null,
+    "id": "reactflow__edge-8a-9null"
+  },
+  {
+    "source": "9",
+    "sourceHandle": "a",
+    "target": "5",
+    "targetHandle": null,
+    "id": "reactflow__edge-9a-5null"
+  },
+  {
+    "id": "10",
+    "type": "denseNode",
+    "position": {
+      "x": 339,
+      "y": 361.09375
+    },
+    "data": {
+      "neurons": 12,
+      "activationFunction": "sigmoid",
+      "dropout": "no",
+      "dropout_probability": 1,
+      "batch_normalization": "no",
+      "id": "10"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "source": "2",
+    "sourceHandle": "a",
+    "target": "10",
+    "targetHandle": null,
+    "id": "reactflow__edge-2a-10null"
+  },
+  {
+    "source": "1",
+    "sourceHandle": "a",
+    "target": "8",
+    "targetHandle": "1",
+    "id": "reactflow__edge-1a-81"
+  },
+  {
+    "source": "10",
+    "sourceHandle": "a",
+    "target": "8",
+    "targetHandle": "2",
+    "id": "reactflow__edge-10a-82"
+  },
+  {
+    "id": "11",
+    "type": "denseNode",
+    "position": {
+      "x": 507,
+      "y": 435.09375
+    },
+    "data": {
+      "neurons": 29,
+      "activationFunction": "sigmoid",
+      "dropout": "no",
+      "dropout_probability": 1,
+      "batch_normalization": "no",
+      "id": "11"
+    },
+    "style": {
+      "border": "1px solid #777",
+      "padding": 10,
+      "background": "white"
+    }
+  },
+  {
+    "source": "3",
+    "sourceHandle": "a",
+    "target": "11",
+    "targetHandle": null,
+    "id": "reactflow__edge-3a-11null"
+  },
+  {
+    "source": "11",
+    "sourceHandle": "a",
+    "target": "8",
+    "targetHandle": "3",
+    "id": "reactflow__edge-11a-83"
+  },
+  {
+    "source": "4",
+    "sourceHandle": "a",
+    "target": "8",
+    "targetHandle": "4",
+    "id": "reactflow__edge-4a-84"
+  }
+]

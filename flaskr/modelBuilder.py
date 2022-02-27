@@ -102,13 +102,11 @@ def create_layer(node: dict):
         # testando com um shape pre-definido
         # se o tipo de dado na coluna for object, entao sera um caminho para imagem
         data_type = dataset_dataframe[node['data']['name']].dtype
-        # if node['data']['id'] == "0":
         if data_type == 'object':
             # se for um caminho para imagem, o shape da primeira imagem sera pego e usado para as outras imagens
             path_to_image = os.path.join(dataset_location, '..', dataset_dataframe[node['data']['name']][0])
             image = tf.io.read_file(path_to_image)
             image = tf.image.decode_image(image, expand_animations=False)
-            # layer = tf.keras.Input(shape=(28, 28, 3), name=node['data']['name'])
             layer = tf.keras.Input(shape=image.shape, name=node['data']['name'])
         else:
             # se nao for imagem
@@ -124,7 +122,7 @@ def create_layer(node: dict):
     elif node['type'] == 'targetNode':
         layer = None
     else:
-        raise("deu ruim")
+        raise "deu ruim em create_layer"
     return layer
 
 

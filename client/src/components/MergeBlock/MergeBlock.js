@@ -112,6 +112,20 @@ export default memo(({ data, isConnectable }) => {
                             checked={operation === "division"}
                         />Division
                     </div>
+                    <br />
+
+                    {operation === "concatenate" &&
+                        <>
+                            <label htmlFor={"input_dimension_"+data.id}>Dimension: </label>
+                            <input 
+                                type="number" 
+                                id={"input_dimension_"+data.id} 
+                                name={"input_dimension_"+data.id} 
+                                defaultValue={data.merge_dimension}
+                                onChange={(e) => data.merge_dimension = parseInt(e.target.value)}
+                            />
+                        </>
+                    }
                 </>
             }
 

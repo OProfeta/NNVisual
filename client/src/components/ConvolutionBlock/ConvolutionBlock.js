@@ -12,6 +12,7 @@ export default memo(({ data, isConnectable }) => {
     const pool = "no";
     const poolType = "max_pooling";
     const collapsed = false;
+    const poolZero = "same";
 
     const [convolutionType, setConvolutionType] = useState(convType);
     const [dimension, setDimension] = useState(dim);
@@ -21,6 +22,7 @@ export default memo(({ data, isConnectable }) => {
     const [batchNormalization, setBatchNormalization] = useState(batchNormal);
     const [pooling, setPooling] = useState(pool);
     const [poolingType, setPoolingType] = useState(poolType);
+    const [poolingZeroPadding, setPoolingZeroPadding] = useState(poolZero);
     const [isCollapsed, setIsCollapsed] = useState(collapsed);
 
 
@@ -53,8 +55,12 @@ export default memo(({ data, isConnectable }) => {
         setPooling(event.target.value);
     }
     var onPoolingTypeValueChange = (event) => {
-        data.poolingType = event.target.value;
+        data.pooling_type = event.target.value;
         setPoolingType(event.target.value);
+    }
+    var onPoolingZeroPaddingValueChange = (event) => {
+        data.pooling_zero_padding = event.target.value;
+        setPoolingZeroPadding(event.target.value);
     }
 
     return (
@@ -233,8 +239,8 @@ export default memo(({ data, isConnectable }) => {
                         defaultValue={data.feature}
                         onChange={(e) => data.feature = parseInt(e.target.value)}
                     />
-
                     <br />
+
                     <label>Zero-padding: </label>
                     <br />
                     <input 
@@ -400,9 +406,40 @@ export default memo(({ data, isConnectable }) => {
                                 type="number" 
                                 id={"input_pooling_area_"+data.id}
                                 name={"input_pooling_area_"+data.id}
-                                defaultValue={data.dropout_probability}
-                                onChange={(e) => data.dropout_probability = parseInt(e.target.value)}
+                                defaultValue={data.pooling_area}
+                                onChange={(e) => data.pooling_area = parseInt(e.target.value)}
                             />
+                            <br />
+
+                            <label htmlFor={"input_pooling_area_"+data.id}>Pooling stride: </label>
+                            <input 
+                                type="number" 
+                                id={"input_pooling_stride_"+data.id}
+                                name={"input_pooling_stride_"+data.id}
+                                defaultValue={data.pooling_stride}
+                                onChange={(e) => data.pooling_stride = parseInt(e.target.value)}
+                            />
+                            <br />
+
+                            <label>Zero-padding for pooling: </label>
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_pooling_same_"+data.id}
+                                name={"input_pooling_same_"+data.id}
+                                value="same"
+                                onChange={onPoolingZeroPaddingValueChange}
+                                checked={poolingZeroPadding === "same"}
+                            />Same
+                            <br />
+                            <input 
+                                type="radio"
+                                id={"input_pooling_valid_"+data.id}
+                                name={"input_pooling_valid_"+data.id}
+                                value="valid"
+                                onChange={onPoolingZeroPaddingValueChange}
+                                checked={poolingZeroPadding === "valid"}
+                            />Valid
                             <br />
                         </>
                     }

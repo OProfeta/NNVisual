@@ -15,15 +15,19 @@ export default memo(({ data, isConnectable }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     var onActivationFunctionValueChange = (event) => {
+        data.activation_function = event.target.value;
         setActivationFunction(event.target.value);
     }
     var onRecurrentAlternativeValueChange = (event) => {
+        data.recurrent_alternative = event.target.value;
         setRecurrentAlternative(event.target.value);
     }
     var onReturnSequenceValueChange = (event) => {
+        data.return_sequence = event.target.value;
         setReturnSequence(event.target.value);
     }
     var onDropoutValueChange = (event) => {
+        data.dropout = event.target.value;
         setDropout(event.target.value);
     }
 
@@ -163,6 +167,21 @@ export default memo(({ data, isConnectable }) => {
                         onChange={onDropoutValueChange}
                         checked={dropout === "no"}
                     />No
+                    <br />
+
+                    {dropout === "yes" &&
+                        <>
+                            <label htmlFor={"input_dropout_probability_"+data.id}>Keep probability: </label>
+                            <input 
+                                type="number" 
+                                id={"input_dropout_probability_"+data.id}
+                                name={"input_dropout_probability_"+data.id}
+                                defaultValue={data.dropout_probability}
+                                onChange={(e) => data.dropout_probability = parseInt(e.target.value)}
+                            />
+                            <br />
+                        </>
+                    }
                 </>
             }
 

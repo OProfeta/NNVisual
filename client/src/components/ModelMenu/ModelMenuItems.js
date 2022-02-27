@@ -50,8 +50,9 @@ export const ModelMenuItems = [
                 data: {
                     neurons: 0,
                     activationFunction: "sigmoid",
-                    dropOut: "no",
-                    batchNormalization: "no"
+                    dropout: "no",
+                    dropout_probability: 1,
+                    batch_normalization: "no"
                 }
             },
             {
@@ -69,7 +70,10 @@ export const ModelMenuItems = [
                     dropout_probability: 1,
                     batchNormalization: "no",
                     pooling: "no",
-                    poolingType: "max_pooling",
+                    pooling_type: "max_pooling",
+                    pooling_area: 0,
+                    pooling_stride: 0,
+                    pooling_zero_padding: "same"
                 }
             },
             {
@@ -77,6 +81,11 @@ export const ModelMenuItems = [
                 type: "recurrentNode",
                 data: {
                     neurons: 0,
+                    activation_function: "sigmoid",
+                    recurrent_alternative: "lstm",
+                    return_sequence: "no",
+                    dropout: "no",
+                    dropout_probability: 1
                 }
             },
         ]
@@ -99,7 +108,8 @@ export const ModelMenuItems = [
                 type: "mergeNode",
                 data: {
                     inputs: 0,
-                    dimension: -1,
+                    operation: "concatenate",
+                    merge_dimension: -1,
                 }
             },
         ]

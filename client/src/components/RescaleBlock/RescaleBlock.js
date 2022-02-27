@@ -30,6 +30,7 @@ export default memo(({ data, isConnectable }) => {
                         id={"input_width_"+data.id} 
                         name={"input_width_"+data.id} 
                         defaultValue={data.width}
+                        onChange={(e) => data.width = parseInt(e.target.value)}
                     />
                     <br />
                     <label htmlFor={"input_height_"+data.id}>Height: </label>
@@ -38,6 +39,7 @@ export default memo(({ data, isConnectable }) => {
                         id={"input_height_"+data.id} 
                         name={"input_height_"+data.id} 
                         defaultValue={data.height}
+                        onChange={(e) => data.height = parseInt(e.target.value)}
                     />
                 </>
             }

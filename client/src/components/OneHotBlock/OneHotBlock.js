@@ -30,6 +30,7 @@ export default memo(({ data, isConnectable }) => {
                         id={"input_classes_"+data.id} 
                         name={"input_classes_"+data.id} 
                         defaultValue={data.classes}
+                        onChange={(e) => data.classes = parseInt(e.target.value)}
                     />
                 </>
             }
