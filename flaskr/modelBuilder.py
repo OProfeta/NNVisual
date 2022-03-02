@@ -35,8 +35,6 @@ def create_graph(elements_json: str) -> nx.DiGraph:
                 _nodes.append(element)
         return _nodes, _edges
 
-    # teste = json.loads(elements_json)
-    # nodes, edges = separate_nodes_and_edges(json.loads(elements_json))
     nodes, edges = separate_nodes_and_edges(elements_json)
     print([(int(e["source"]), int(e["target"])) for e in edges])
     graph = nx.DiGraph()
@@ -70,7 +68,6 @@ def apply_on_nodes_recursive(graph: nx.DiGraph, node_id):
         """Aqui é o input"""
         # O None significa que o shape do input nao é conhecido no momento da criacao da camada
         # O shape PRECISA ser definido no momento de criacao da camada input
-        # inputs.append(tf.keras.layers.Input(None,))
         inputs.append(layer)
         name_inputs.append(f"input{index}")
         index = index + 1
@@ -98,8 +95,6 @@ def create_layer(node: dict):
     """
     global dataset_dataframe
     if node['type'] == 'inputNode':
-        # layer = InputNodeLayer()
-        # testando com um shape pre-definido
         # se o tipo de dado na coluna for object, entao sera um caminho para imagem
         data_type = dataset_dataframe[node['data']['name']].dtype
         if data_type == 'object':
@@ -133,15 +128,6 @@ def create_model(elements: str):
     for final_id, _ in final_nodes:
         output = apply_on_nodes_recursive(graph, final_id)
 
-    # model = tf.keras.Model(inputs=inputs, outputs=output, name="modeloProfeta")
-    # model.summary()
-
-    x_train, y_train, x_test, y_test = load_mnist()
-    x_train, x_test = x_train / 255.0, x_test / 255.0
-
-    # print("INPUTS ######################################")
-    # for x in inputs:
-    #     print(x)
     model = tf.keras.Model(inputs=inputs, outputs=output, name="modeloProfeta")
     model.summary()
 
@@ -152,21 +138,6 @@ def create_model(elements: str):
                   metrics=['mse']
                   )
 
-    # print(f"model.inputs = {model.inputs}")
-    # print([camada.name for camada in model.inputs])
-    # print(f"model.outputs = {model.outputs}")
-    # print([camada.name for camada in model.outputs])
-    # print(model.outputs[0].name)
-
-    inputs_dictionary = {}
-    targets_thingy = None
-    # print("HMMMMM")
-
-    # custom_generator = CustomGenerator(dataset_location,
-    #                                    dataset_dataframe,
-    #                                    [camada.name for camada in model.inputs],
-    #                                    model.outputs[0].name
-    #                                    )
     custom_train_generator = CustomGenerator(dataset_location,
                                              df_train,
                                              [camada.name for camada in model.inputs],
@@ -178,47 +149,13 @@ def create_model(elements: str):
                                             [camada.name for camada in model.inputs],
                                             model.outputs[0].name
                                             )
-
-    # for column in dataset_dataframe:
-    #     print(column)
-    #     # print(target)
-    #     # print(type(column))
-    #     if pd.api.types.is_numeric_dtype(dataset_dataframe[column]):
-    #         # print(tf.constant(dataset_dataframe[column]))
-    #         if column == target:
-    #             # targets_thingy = dataset_dataframe[column].to_numpy()
-    #             targets_thingy = tf.data.Dataset.from_tensor_slices(dataset_dataframe[column])
-    #         else:
-    #             inputs_dictionary[column] = dataset_dataframe[column].to_numpy()
-    #             # hmmm
-    #     else:
-    #         paths_to_images = tf.data.Dataset.from_tensor_slices(dataset_dataframe[column])
-    #         print(f"paths_to_images = {paths_to_images}")
-    #         # inputs_dictionary[column] = paths_to_images.map(lambda x: tf.py_function(image_from_path, [x], [tf.string]))
-    #         inputs_dictionary[column] = paths_to_images.map(lambda x: tf.py_function(image_from_path, [x], [tf.uint8]))
-    #         print(f"inputs_dictionary[column] = {inputs_dictionary[column]}")
-    #         print(next(iter(inputs_dictionary[column])))
-    #     print(dataset_dataframe[column].dtype)
-
-    # print("OLHA AQUI PROFETA")
-    # print(inputs_dictionary)
-
-    # model.fit(x=inputs_dictionary, y=targets_thingy, epochs=5)
-    # model.fit(x=custom_train_generator, validation_data=custom_test_generator, epochs=5)
     model.fit(x=custom_train_generator, epochs=5)
 
-    # model.fit(x_train, y_train, epochs=5)
-    #
-    # model.evaluate(x_test, y_test, verbose=2)
     model.evaluate(custom_test_generator, verbose=2)
 
 
 def image_from_path(path):
-    # print('oi')
-    # # print(tf.io.parse_tensor(path, out_type=tf.string))
-    # print(path)
     path = path.numpy().decode('utf-8')
-    # print(path)
     path = os.path.join(dataset_location, '..', path)
     image = tf.io.read_file(path)
     image = tf.image.decode_image(image, expand_animations=False)
@@ -239,55 +176,10 @@ def load_dataset(dataset_loc):
         target = header[-1]
 
         # caractere '_' dando problema (provavelmente algo a ver com utf-8) (TEM que ser utf-8)
-        # ex = image_path => image+AF8-path
-        # print(inputs)
-        # print(target)
 
-        # print(numeric_columns)
-
-        # arr = np.matrix(np.loadtxt(dataset_loc, delimiter=',', skiprows=1, usecols=tuple(numeric_columns)))
-        # arr = np.loadtxt(dataset_loc, delimiter=',', skiprows=1, usecols=tuple(numeric_columns))
-        # print(arr)
-        #
-        # coluna1 = arr[:, 0]
-        # coluna2 = arr[:, 1]
-        # coluna3 = arr[:, 2]
-        # coluna4 = arr[:, 3]
-        # coluna5 = arr[:, 4]
-
-        # df = pd.read_csv(dataset_loc, sep=',')
-        # print(df)
         dataset_dataframe = pd.read_csv(dataset_loc, sep=',')
-        # procura a imagem pelo caminho no .csv, tendo como ponto de partida
-        # o diretorio no qual o .csv se encontra
-        path_to_image = os.path.join(dataset_loc, '..', dataset_dataframe["image_path"][0])
-        print(path_to_image)
-        image = tf.io.read_file(path_to_image)
-        # print(image)
-        image = tf.image.decode_image(image, expand_animations=False)
-        # print(image)
 
         df_train = dataset_dataframe.sample(frac=0.8, random_state=200)
         df_test = dataset_dataframe.drop(df_train.index)
-        # print(train)
-        # print(test)
-
-        # print(dataset_dataframe)
-
-
-        # print("OLHA AQUI EM BAIXO")
-        # d = dataset_dataframe["image_path"].dtype
-        # for col, dt in dataset_dataframe.dtypes.items():
-        #     print(col)
-        #     print(dt)
-        # print(type(dataset_dataframe.dtypes))
-        # print(f"AAAAAAAAAAAAAAAAAAAAA = {d}")
-        # print(d == 'object')
-
-        # xis = {}
-        # for c in df.columns:
-        #     # xis[c] = df[[c]].to_numpy()
-        #     xis[c] = df[[c]]
-        # print(xis)
 
     return inputs, target

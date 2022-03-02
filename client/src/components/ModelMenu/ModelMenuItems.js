@@ -114,19 +114,20 @@ export const ModelMenuItems = [
             },
         ]
     },
-    {
-        id: 3,
-        title: "Custom",
-        selected: false,
-        key: "custom",
-        list: [
-            {
-                title: "Custom",
-                type: "codeNode",
-                data: {
-                    placeHolder: "Code goes here"
-                },
-            },
-        ]
-    },
+    // custom desabilitado
+    // {
+    //     id: 3,
+    //     title: "Custom",
+    //     selected: false,
+    //     key: "custom",
+    //     list: [
+    //         {
+    //             title: "Custom",
+    //             type: "codeNode",
+    //             data: {
+    //                 placeHolder: "Code goes here"
+    //             },
+    //         },
+    //     ]
+    // },
 ]
